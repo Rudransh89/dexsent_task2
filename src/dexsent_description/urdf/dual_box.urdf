@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot name="dual_crx_system">
+  <material name="kuka_orange"><color rgba="1 0.4 0 1"/></material>
+  <material name="fanuc_white"><color rgba="0.9 0.9 0.9 1"/></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1"/></material>
+  <material name="table_grey"><color rgba="0.8 0.8 0.8 1"/></material>
+
+  <link name="world"/>
+
+  <joint name="table_joint" type="fixed">
+    <parent link="world"/><child link="table"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
+  <link name="table"><visual><geometry><box size="1.0 1.5 0.1"/></geometry><material name="table_grey"/></visual></link>
+
+  <joint name="left_mount" type="fixed">
+    <parent link="table"/><child link="left_base"/>
+    <origin xyz="0 0.4 0.15" rpy="-0.785 0 0"/>
+  </joint>
+  <link name="left_base"><visual><geometry><cylinder radius="0.1" length="0.1"/></geometry><material name="dark_grey"/></visual></link>
+
+  <joint name="left_joint_1" type="revolute"><parent link="left_base"/><child link="left_link_1"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="0 0 1"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_1"><visual><origin xyz="0 0 0.1" rpy="0 0 0"/><geometry><cylinder radius="0.08" length="0.2"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="left_joint_2" type="revolute"><parent link="left_link_1"/><child link="left_link_2"/><origin xyz="0 0 0.2" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_2"><visual><origin xyz="0 0 0.35" rpy="0 0 0"/><geometry><cylinder radius="0.06" length="0.7"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="left_joint_3" type="revolute"><parent link="left_link_2"/><child link="left_link_3"/><origin xyz="0 0 0.7" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_3"><visual><origin xyz="0 0 0.25" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.5"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="left_joint_4" type="revolute"><parent link="left_link_3"/><child link="left_link_4"/><origin xyz="0 0 0.5" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_4"><visual><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.1"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="left_joint_5" type="revolute"><parent link="left_link_4"/><child link="left_link_5"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_5"><visual><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.1"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="left_joint_6" type="revolute"><parent link="left_link_5"/><child link="left_link_6"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="left_link_6"><visual><origin xyz="0 0 0.02" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.05"/></geometry><material name="dark_grey"/></visual></link>
+
+
+  <joint name="right_mount" type="fixed">
+    <parent link="table"/><child link="right_base"/>
+    <origin xyz="0 -0.4 0.15" rpy="0.785 0 0"/>
+  </joint>
+  <link name="right_base"><visual><geometry><cylinder radius="0.1" length="0.1"/></geometry><material name="dark_grey"/></visual></link>
+
+  <joint name="right_joint_1" type="revolute"><parent link="right_base"/><child link="right_link_1"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="0 0 1"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_1"><visual><origin xyz="0 0 0.1" rpy="0 0 0"/><geometry><cylinder radius="0.08" length="0.2"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="right_joint_2" type="revolute"><parent link="right_link_1"/><child link="right_link_2"/><origin xyz="0 0 0.2" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_2"><visual><origin xyz="0 0 0.35" rpy="0 0 0"/><geometry><cylinder radius="0.06" length="0.7"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="right_joint_3" type="revolute"><parent link="right_link_2"/><child link="right_link_3"/><origin xyz="0 0 0.7" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_3"><visual><origin xyz="0 0 0.25" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.5"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="right_joint_4" type="revolute"><parent link="right_link_3"/><child link="right_link_4"/><origin xyz="0 0 0.5" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_4"><visual><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.1"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="right_joint_5" type="revolute"><parent link="right_link_4"/><child link="right_link_5"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_5"><visual><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.1"/></geometry><material name="kuka_orange"/></visual></link>
+
+  <joint name="right_joint_6" type="revolute"><parent link="right_link_5"/><child link="right_link_6"/><origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-3.0" upper="3.0" effort="10" velocity="1"/></joint>
+  <link name="right_link_6"><visual><origin xyz="0 0 0.02" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.05"/></geometry><material name="dark_grey"/></visual></link>
+
+</robot>

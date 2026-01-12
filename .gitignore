@@ -1,0 +1,10 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+# Ignore the archive folder inside description
+dexsent_description/urdf/archive/

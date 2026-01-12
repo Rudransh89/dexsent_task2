@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_crx_system">
+    <xacro:include filename="/home/India/dexsent_ws/src/fanuc_description/fanuc_crx_description/urdf/crx10ia_l_urdf_macro.xacro"/>
+
+    <link name="world"/>
+
+    <xacro:crx10ia_l prefix="left_" parent="world" child="left_base_link">
+        <origin xyz="0 0.5 0" rpy="0 0.785 0" />
+    </xacro:crx10ia_l>
+
+    <xacro:crx10ia_l prefix="right_" parent="world" child="right_base_link">
+        <origin xyz="0 -0.5 0" rpy="0 -0.785 0" />
+    </xacro:crx10ia_l>
+
+    <ros2_control name="DualArmSystem" type="system">
+        <hardware><plugin>mock_components/GenericSystem</plugin></hardware>
+        <xacro:macro name="config_joint" params="prefix name">
+            <joint name="${prefix}${name}">
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+        </xacro:macro>
+        <xacro:config_joint prefix="left_" name="joint_1"/>
+        <xacro:config_joint prefix="left_" name="joint_2"/>
+        <xacro:config_joint prefix="left_" name="joint_3"/>
+        <xacro:config_joint prefix="left_" name="joint_4"/>
+        <xacro:config_joint prefix="left_" name="joint_5"/>
+        <xacro:config_joint prefix="left_" name="joint_6"/>
+        <xacro:config_joint prefix="right_" name="joint_1"/>
+        <xacro:config_joint prefix="right_" name="joint_2"/>
+        <xacro:config_joint prefix="right_" name="joint_3"/>
+        <xacro:config_joint prefix="right_" name="joint_4"/>
+        <xacro:config_joint prefix="right_" name="joint_5"/>
+        <xacro:config_joint prefix="right_" name="joint_6"/>
+    </ros2_control>
+</robot>
